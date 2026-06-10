@@ -74,7 +74,7 @@ export function Waardebloem() {
             return (
               <g
                 key={p.id}
-                transform={`translate(${tx} ${ty}) rotate(${p.angle + 90})`}
+                transform={`translate(${tx} ${ty}) rotate(${p.angle + 90}) scale(${isActive ? 1.06 : 1})`}
                 onMouseEnter={() => setActive(p.id)}
                 onFocus={() => setActive(p.id)}
                 onClick={() => setActive(p.id)}
@@ -82,11 +82,8 @@ export function Waardebloem() {
                 role="button"
                 aria-pressed={isActive}
                 aria-label={p.label}
-                className="cursor-pointer outline-none transition-transform duration-500 ease-out focus-visible:[&>ellipse]:stroke-foreground"
-                style={{
-                  transformOrigin: `${tx}px ${ty}px`,
-                  transform: `translate(${tx}px, ${ty}px) rotate(${p.angle + 90}deg) scale(${isActive ? 1.06 : 1})`,
-                }}
+                className="cursor-pointer outline-none"
+                style={{ transition: "transform 400ms ease" }}
               >
                 <ellipse
                   cx={0}

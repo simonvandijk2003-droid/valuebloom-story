@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Waardebloem } from "@/components/Waardebloem";
+import { WaardebloemHub } from "@/components/WaardebloemHub";
 import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 
 export const Route = createFileRoute("/")({

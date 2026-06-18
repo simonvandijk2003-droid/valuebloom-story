@@ -197,17 +197,17 @@ function SlideContext() {
             Van business naar value
           </p>
           <div className="relative mt-5 aspect-square w-full">
-            <svg viewBox="0 0 300 300" className="h-full w-full">
-              <line x1="40" y1="260" x2="280" y2="260" stroke="var(--ink)" strokeWidth="1.5" />
-              <line x1="40" y1="20" x2="40" y2="260" stroke="var(--ink)" strokeWidth="1.5" />
-              <text x="285" y="275" fontSize="10" fill="var(--muted-foreground)">value →</text>
-              <text x="10" y="18" fontSize="10" fill="var(--muted-foreground)">business ↑</text>
-              <line x1="40" y1="140" x2="280" y2="140" stroke="var(--border)" strokeDasharray="2 4" />
-              <circle cx="220" cy="195" r="34" fill="var(--social)" opacity="0.85" />
-              <text x="220" y="198" textAnchor="middle" fontSize="10" fontWeight="600" fill="var(--ink)">
+            <svg viewBox="0 0 320 320" preserveAspectRatio="xMidYMid meet" className="h-full w-full overflow-visible">
+              <line x1="40" y1="260" x2="290" y2="260" stroke="var(--ink)" strokeWidth="1.5" />
+              <line x1="40" y1="30" x2="40" y2="260" stroke="var(--ink)" strokeWidth="1.5" />
+              <text x="288" y="278" fontSize="10" textAnchor="end" fill="var(--muted-foreground)">value →</text>
+              <text x="46" y="24" fontSize="10" fill="var(--muted-foreground)">business ↑</text>
+              <line x1="40" y1="140" x2="290" y2="140" stroke="var(--border)" strokeDasharray="2 4" />
+              <circle cx="210" cy="200" r="32" fill="var(--social)" opacity="0.85" />
+              <text x="210" y="200" textAnchor="middle" fontSize="10" fontWeight="600" fill="var(--ink)">
                 broedplaatsen
               </text>
-              <text x="220" y="210" textAnchor="middle" fontSize="9" fill="var(--ink)">&amp; makers</text>
+              <text x="210" y="212" textAnchor="middle" fontSize="9" fill="var(--ink)">&amp; makers</text>
             </svg>
           </div>
           <p className="mt-3 text-sm text-foreground/75">

@@ -5,67 +5,88 @@ type Value = "social" | "economic" | "ecological";
 interface PetalData {
   id: Value;
   label: string;
-  short: string;
-  keywords: string[];
+  color: string;
+  bees: number;
+  interventions: { name: string; strength: number }[];
   description: string;
-  angle: number; // degrees, 0 = top
+  angle: number;
 }
 
 const petals: PetalData[] = [
   {
     id: "social",
-    label: "Sociale waarde",
-    short: "Ontmoeting, community & cohesie",
-    keywords: ["Community-gevoel", "Ontmoeting", "Open ateliers", "Ambachtsworkshops", "Kennisdeling"],
-    description:
-      "Bewoners, makers en het maakbedrijf van Piet Hein Eek komen elkaar structureel tegen via open ateliers, ambachtsworkshops en gezamenlijke maakprojecten. Zo groeit het community-gevoel dat nu nog ontbreekt op Strijp-R.",
+    label: "Sociaal",
+    color: "var(--social)",
+    bees: 5,
     angle: -90,
+    interventions: [
+      { name: "Gedeelde werkruimtes", strength: 5 },
+      { name: "Workshops & open ateliers", strength: 5 },
+      { name: "Gedeelde materialen", strength: 3 },
+      { name: "Betaalbare huur", strength: 3 },
+    ],
+    description:
+      "Sociale waarde komt het sterkst naar voren: weinig contact tussen bewoners en makers, terwijl daar wel behoefte aan is. Workshops, open ateliers en gedeelde werkruimtes versterken ontmoeting, samenwerking en kennisdeling.",
   },
   {
     id: "economic",
-    label: "Economische waarde",
-    short: "Verbondenheid leidt tot activiteit",
-    keywords: ["Workshops", "Winkel Piet Hein Eek", "Samenwerking", "Betaalbare werkruimte", "Bewonerspas"],
-    description:
-      "Een sterker gemeenschapsgevoel vertaalt zich naar economische activiteit: aankopen in de winkel, deelname aan betaalde workshops en gezamenlijke opdrachten tussen makers. Het maakbedrijf wordt minder kwetsbaar en de huur blijft betaalbaar.",
+    label: "Economisch",
+    color: "var(--economic)",
+    bees: 5,
     angle: 30,
+    interventions: [
+      { name: "Gedeelde werkruimtes", strength: 5 },
+      { name: "Gedeelde materialen", strength: 5 },
+      { name: "Betaalbare huur", strength: 5 },
+      { name: "Workshops & open ateliers", strength: 2 },
+    ],
+    description:
+      "Delen van ruimtes, machines en materialen verlaagt kosten. Meer betrokkenheid van bewoners leidt tot economische activiteit: aankopen, opdrachten en samenwerking tussen makers.",
   },
   {
     id: "ecological",
-    label: "Ecologische waarde",
-    short: "Delen, hergebruik & circulariteit",
-    keywords: ["Gedeelde werkruimtes", "Gedeelde materialen", "Hergebruik", "Circulaire werkwijze", "Industrieel erfgoed"],
-    description:
-      "Door werkruimtes en materialen onderling te delen, worden ruimtes efficiënter benut en wordt er minder weggegooid. Dit sluit aan op de circulaire werkwijze die Piet Hein Eek al decennialang toepast.",
+    label: "Ecologisch",
+    color: "var(--ecological)",
+    bees: 5,
     angle: 150,
+    interventions: [
+      { name: "Gedeelde werkruimtes", strength: 5 },
+      { name: "Gedeelde materialen", strength: 5 },
+      { name: "Cascadering reststromen", strength: 5 },
+      { name: "Workshops & open ateliers", strength: 2 },
+    ],
+    description:
+      "Ecologische waarde ontstaat door het delen van ruimtes en materialen. Cascadering — reststromen als hout, metaal en textiel opnieuw inzetten — voorkomt verspilling en versterkt de circulaire visie van Strijp-R.",
   },
 ];
+
+function Bees({ count }: { count: number }) {
+  return (
+    <span className="inline-flex gap-0.5" aria-label={`${count} van 5`}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <span key={i} className={i < count ? "opacity-100" : "opacity-25"}>🐝</span>
+      ))}
+    </span>
+  );
+}
 
 export function Waardebloem() {
   const [active, setActive] = useState<Value>("social");
   const current = petals.find((p) => p.id === active)!;
 
-  // Geometry
-  const cx = 200;
-  const cy = 200;
-  const petalRy = 110;
-  const petalRx = 64;
-  const petalOffset = 92; // distance from center to petal center
+  const cx = 200, cy = 200, petalRy = 115, petalRx = 70, petalOffset = 95;
 
   return (
-    <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
-      <div className="relative mx-auto aspect-square w-full max-w-[460px]">
-        <svg viewBox="0 0 400 400" className="h-full w-full" aria-label="Interactieve Waardebloem">
+    <div className="grid w-full max-w-6xl gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-center">
+      <div className="relative mx-auto aspect-square w-full max-w-[480px]">
+        <svg viewBox="0 0 400 400" className="h-full w-full" aria-label="Waardebloem">
           <defs>
             <radialGradient id="centerGrad" cx="50%" cy="50%" r="50%">
               <stop offset="0%" stopColor="oklch(0.98 0.01 80)" />
-              <stop offset="100%" stopColor="oklch(0.88 0.02 70)" />
+              <stop offset="100%" stopColor="oklch(0.86 0.04 70)" />
             </radialGradient>
           </defs>
-
-          {/* Subtle background ring */}
-          <circle cx={cx} cy={cy} r={170} fill="none" stroke="var(--border)" strokeDasharray="2 6" />
-
+          <circle cx={cx} cy={cy} r={172} fill="none" stroke="var(--border)" strokeDasharray="2 6" />
           {petals.map((p) => {
             const rad = (p.angle * Math.PI) / 180;
             const tx = cx + Math.cos(rad) * petalOffset;
@@ -74,82 +95,55 @@ export function Waardebloem() {
             return (
               <g
                 key={p.id}
-                transform={`translate(${tx} ${ty}) rotate(${p.angle + 90}) scale(${isActive ? 1.06 : 1})`}
+                transform={`translate(${tx} ${ty}) rotate(${p.angle + 90}) scale(${isActive ? 1.08 : 1})`}
                 onMouseEnter={() => setActive(p.id)}
-                onFocus={() => setActive(p.id)}
                 onClick={() => setActive(p.id)}
                 tabIndex={0}
                 role="button"
-                aria-pressed={isActive}
                 aria-label={p.label}
                 className="cursor-pointer outline-none"
-                style={{ transition: "transform 400ms ease" }}
+                style={{ transition: "transform 500ms cubic-bezier(.2,.7,.2,1)" }}
               >
                 <ellipse
-                  cx={0}
-                  cy={0}
-                  rx={petalRx}
-                  ry={petalRy}
-                  className={`petal-${p.id}`}
-                  opacity={isActive ? 0.95 : 0.78}
-                  stroke="oklch(0.2 0.02 60 / 0.18)"
-                  strokeWidth={1}
-                  style={{ transition: "opacity 300ms ease, transform 500ms ease" }}
+                  cx={0} cy={0} rx={petalRx} ry={petalRy}
+                  fill={p.color}
+                  opacity={isActive ? 0.95 : 0.7}
+                  stroke="oklch(0.24 0.012 50 / 0.18)"
                 />
                 <text
-                  x={0}
-                  y={-petalRy + 28}
-                  textAnchor="middle"
+                  x={0} y={-petalRy + 30} textAnchor="middle"
                   transform={`rotate(${-(p.angle + 90)})`}
-                  className="fill-white font-medium"
-                  style={{
-                    fontSize: 13,
-                    fontFamily: "var(--font-sans)",
-                    fill: p.id === "economic" ? "oklch(0.2 0.02 60)" : "white",
-                    letterSpacing: "0.02em",
-                  }}
+                  style={{ fontSize: 14, fontFamily: "var(--font-sans)", fill: "var(--ink)", fontWeight: 600, letterSpacing: "0.02em" }}
                 >
-                  {p.label.split(" ")[0]}
+                  {p.label}
                 </text>
               </g>
             );
           })}
-
-          {/* Center */}
-          <circle cx={cx} cy={cy} r={52} fill="url(#centerGrad)" stroke="var(--border)" />
-          <text
-            x={cx}
-            y={cy - 4}
-            textAnchor="middle"
-            style={{ fontFamily: "var(--font-display)", fontSize: 16, fill: "var(--foreground)" }}
-          >
+          <circle cx={cx} cy={cy} r={54} fill="url(#centerGrad)" stroke="var(--border)" />
+          <text x={cx} y={cy - 2} textAnchor="middle"
+            style={{ fontFamily: "var(--font-display)", fontSize: 17, fill: "var(--ink)" }}>
             Strijp-R
           </text>
-          <text
-            x={cx}
-            y={cy + 14}
-            textAnchor="middle"
-            style={{ fontFamily: "var(--font-sans)", fontSize: 10, fill: "var(--muted-foreground)", letterSpacing: "0.12em" }}
-          >
+          <text x={cx} y={cy + 14} textAnchor="middle"
+            style={{ fontFamily: "var(--font-sans)", fontSize: 9, fill: "var(--muted-foreground)", letterSpacing: "0.18em" }}>
             WAARDEBLOEM
           </text>
         </svg>
       </div>
 
-      <div className="relative">
-        <div className="flex gap-2 pb-4">
+      <div>
+        <div className="mb-4 flex gap-2">
           {petals.map((p) => (
             <button
               key={p.id}
               onClick={() => setActive(p.id)}
-              className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
-                active === p.id
-                  ? "text-primary-foreground"
-                  : "bg-secondary text-secondary-foreground hover:bg-muted"
+              className={`rounded-full border px-4 py-1.5 text-sm font-medium transition ${
+                active === p.id ? "shadow-sm" : "bg-card hover:bg-muted"
               }`}
               style={
                 active === p.id
-                  ? { backgroundColor: `var(--${p.id})`, color: p.id === "economic" ? "var(--foreground)" : "white" }
+                  ? { backgroundColor: p.color, borderColor: "transparent", color: "var(--ink)" }
                   : undefined
               }
             >
@@ -158,32 +152,24 @@ export function Waardebloem() {
           ))}
         </div>
 
-        <div
-          key={current.id}
-          className="rounded-2xl border bg-card p-6 shadow-[var(--shadow-soft)] duration-500 animate-in fade-in slide-in-from-bottom-2"
-        >
+        <div key={current.id} className="rounded-2xl border bg-card p-7 shadow-[var(--shadow-soft)] duration-500 animate-in fade-in slide-in-from-bottom-2">
           <div className="flex items-center gap-3">
-            <span
-              className="h-3 w-3 rounded-full"
-              style={{ backgroundColor: `var(--${current.id})` }}
-            />
-            <h3 className="text-2xl">{current.label}</h3>
+            <span className="h-4 w-4 rounded-full" style={{ backgroundColor: current.color }} />
+            <h3 className="text-2xl">{current.label}e waarde</h3>
           </div>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{current.short}</p>
-          <p className="mt-4 leading-relaxed">{current.description}</p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {current.keywords.map((k) => (
-              <span
-                key={k}
-                className="rounded-full border bg-background px-3 py-1 text-xs text-foreground/80"
-              >
-                {k}
-              </span>
+          <p className="mt-3 leading-relaxed text-foreground/80">{current.description}</p>
+          <div className="mt-5 space-y-2">
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Bijdrage interventies</p>
+            {current.interventions.map((i) => (
+              <div key={i.name} className="flex items-center justify-between gap-3 border-b border-border/60 py-1.5 text-sm">
+                <span>{i.name}</span>
+                <Bees count={i.strength} />
+              </div>
             ))}
           </div>
         </div>
         <p className="mt-3 text-xs text-muted-foreground">
-          Tip: hover of klik op een bloemblad om de bijbehorende waarde te bekijken.
+          Hover of klik een bloemblad. 🐝 = sterkte van de bijdrage. Concept: Leclercq &amp; Smit (2026).
         </p>
       </div>
     </div>

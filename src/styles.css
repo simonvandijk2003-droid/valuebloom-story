@@ -32,87 +32,98 @@
   --color-ring: var(--ring);
 
   --color-social: var(--social);
-  --color-social-foreground: var(--social-foreground);
   --color-economic: var(--economic);
-  --color-economic-foreground: var(--economic-foreground);
   --color-ecological: var(--ecological);
-  --color-ecological-foreground: var(--ecological-foreground);
+  --color-terracotta: var(--terracotta);
+  --color-sand: var(--sand);
+  --color-ink: var(--ink);
 
-  --font-display: "Inter", system-ui, sans-serif;
+  --font-display: "Fraunces", "Playfair Display", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
 :root {
   --radius: 0.5rem;
 
-  /* Minimalist light theme */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.18 0.01 250);
+  /* Warm industrial */
+  --background: oklch(0.96 0.012 75);          /* #F5F1EA bone */
+  --foreground: oklch(0.24 0.012 50);          /* #2B2724 ink */
+  --ink: oklch(0.24 0.012 50);
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.01 250);
+  --card: oklch(0.985 0.008 75);
+  --card-foreground: oklch(0.24 0.012 50);
 
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.01 250);
+  --popover: oklch(0.985 0.008 75);
+  --popover-foreground: oklch(0.24 0.012 50);
 
-  /* #1978E5 */
-  --primary: oklch(0.58 0.18 255);
-  --primary-foreground: oklch(1 0 0);
+  --primary: oklch(0.52 0.13 45);              /* terracotta */
+  --primary-foreground: oklch(0.98 0.005 80);
+  --terracotta: oklch(0.52 0.13 45);
+  --sand: oklch(0.83 0.045 80);
 
-  --secondary: oklch(0.97 0.005 250);
-  --secondary-foreground: oklch(0.18 0.01 250);
+  --secondary: oklch(0.92 0.02 75);
+  --secondary-foreground: oklch(0.24 0.012 50);
 
-  --muted: oklch(0.97 0.005 250);
-  --muted-foreground: oklch(0.48 0.01 250);
+  --muted: oklch(0.92 0.018 75);
+  --muted-foreground: oklch(0.48 0.015 60);
 
-  --accent: oklch(0.58 0.18 255);
-  --accent-foreground: oklch(1 0 0);
+  --accent: oklch(0.55 0.13 45);
+  --accent-foreground: oklch(0.98 0.005 80);
 
   --destructive: oklch(0.55 0.2 27);
   --destructive-foreground: oklch(1 0 0);
 
-  --border: oklch(0.92 0.005 250);
-  --input: oklch(0.92 0.005 250);
-  --ring: oklch(0.58 0.18 255);
+  --border: oklch(0.85 0.018 70);
+  --input: oklch(0.85 0.018 70);
+  --ring: oklch(0.52 0.13 45);
 
-  /* Waardebloem values — subtle, minimalist */
-  --social: oklch(0.58 0.18 255);              /* primary blue */
-  --social-foreground: oklch(1 0 0);
-  --economic: oklch(0.68 0.15 165);            /* teal/green */
-  --economic-foreground: oklch(1 0 0);
-  --ecological: oklch(0.62 0.16 145);          /* fresh green */
-  --ecological-foreground: oklch(1 0 0);
+  /* Waardebloem waarden */
+  --social: oklch(0.66 0.11 25);               /* terracotta-roze */
+  --economic: oklch(0.78 0.13 80);             /* warm oker/geel */
+  --ecological: oklch(0.58 0.08 140);          /* gedempt groen */
 
-  --shadow-soft: 0 1px 2px oklch(0.18 0.01 250 / 0.04), 0 4px 16px oklch(0.18 0.01 250 / 0.05);
-  --shadow-petal: 0 12px 40px oklch(0.18 0.01 250 / 0.08);
+  --shadow-soft: 0 1px 2px oklch(0.24 0.012 50 / 0.06), 0 8px 28px oklch(0.24 0.012 50 / 0.08);
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
-  html {
-    scroll-behavior: smooth;
-  }
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(oklch(0.85 0.02 70 / 0.35) 1px, transparent 1px);
+    background-size: 22px 22px;
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.025em;
+    letter-spacing: -0.02em;
     font-weight: 600;
   }
 }
 
-@utility petal-social {
-  fill: var(--social);
+@utility petal-social { fill: var(--social); }
+@utility petal-economic { fill: var(--economic); }
+@utility petal-ecological { fill: var(--ecological); }
+
+@utility deck {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+  scroll-behavior: smooth;
 }
-@utility petal-economic {
-  fill: var(--economic);
-}
-@utility petal-ecological {
-  fill: var(--ecological);
+@utility slide {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 5rem 5rem;
+  position: relative;
+  overflow: hidden;
 }

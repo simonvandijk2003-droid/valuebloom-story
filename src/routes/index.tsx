@@ -44,6 +44,28 @@ function Deck() {
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Toggle .is-active on the visible slide to trigger entrance animations.
+  useEffect(() => {
+    const el = deckRef.current;
+    if (!el) return;
+    const slides = Array.from(el.querySelectorAll<HTMLElement>(".slide"));
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.intersectionRatio >= 0.55) {
+            e.target.classList.add("is-active");
+          } else if (e.intersectionRatio < 0.15) {
+            e.target.classList.remove("is-active");
+          }
+        });
+      },
+      { root: el, threshold: [0, 0.15, 0.55, 0.9] }
+    );
+    slides.forEach((s) => io.observe(s));
+    if (slides[0]) slides[0].classList.add("is-active");
+    return () => io.disconnect();
+  }, []);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (["ArrowRight", "ArrowDown", "PageDown", " "].includes(e.key)) {
@@ -132,9 +154,9 @@ function Deck() {
 function SlideShell({ children, kicker, className = "" }: { children: React.ReactNode; kicker?: string; className?: string }) {
   return (
     <section className={`slide ${className}`}>
-      <div className="mx-auto w-full max-w-6xl animate-in fade-in slide-in-from-bottom-3 duration-700">
+      <div className="auto-stagger mx-auto w-full max-w-6xl">
         {kicker && (
-          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-primary">{kicker}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">{kicker}</p>
         )}
         {children}
       </div>

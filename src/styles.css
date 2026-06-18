@@ -127,3 +127,63 @@
   position: relative;
   overflow: hidden;
 }
+
+/* ───────── Subtle entrance & ambient animations ───────── */
+@keyframes lv-reveal-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes lv-fade-soft {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes lv-draw {
+  from { stroke-dashoffset: var(--lv-dash, 1400); opacity: 0; }
+  20%  { opacity: 1; }
+  to   { stroke-dashoffset: 0; opacity: 1; }
+}
+@keyframes lv-breathe {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-3px) scale(1.012); }
+}
+
+.slide .auto-stagger > * { opacity: 0; transform: translateY(16px); will-change: opacity, transform; }
+.slide.is-active .auto-stagger > * {
+  animation: lv-reveal-up 0.8s cubic-bezier(0.22, 0.7, 0.2, 1) both;
+}
+.slide.is-active .auto-stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.slide.is-active .auto-stagger > *:nth-child(2) { animation-delay: 0.18s; }
+.slide.is-active .auto-stagger > *:nth-child(3) { animation-delay: 0.30s; }
+.slide.is-active .auto-stagger > *:nth-child(4) { animation-delay: 0.42s; }
+.slide.is-active .auto-stagger > *:nth-child(5) { animation-delay: 0.54s; }
+.slide.is-active .auto-stagger > *:nth-child(6) { animation-delay: 0.66s; }
+.slide.is-active .auto-stagger > *:nth-child(n+7) { animation-delay: 0.78s; }
+
+.wb-flower {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: lv-breathe 7.5s ease-in-out infinite;
+}
+.wb-flower-2 { animation-duration: 8.8s; animation-delay: -2.4s; }
+.wb-flower-3 { animation-duration: 9.6s; animation-delay: -4.6s; }
+.wb-flower-4 { animation-duration: 6.8s; animation-delay: -1.2s; }
+
+.wb-draw {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  animation: lv-draw 1.4s ease-out 0.2s forwards;
+}
+.wb-draw-2 { animation-delay: 0.55s; }
+.wb-draw-3 { animation-delay: 0.90s; }
+.wb-draw-4 { animation-delay: 1.20s; }
+.wb-draw-5 { animation-delay: 1.45s; }
+
+.wb-late { opacity: 0; animation: lv-fade-soft 0.7s ease-out forwards; animation-delay: 1.6s; }
+
+.lv-lift { transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease; }
+.lv-lift:hover { transform: translateY(-2px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .slide.is-active .auto-stagger > *,
+  .wb-flower, .wb-draw, .wb-late { animation: none !important; opacity: 1 !important; transform: none !important; stroke-dashoffset: 0 !important; }
+}

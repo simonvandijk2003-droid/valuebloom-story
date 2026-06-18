@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Waardebloem } from "@/components/Waardebloem";
+import { WaardebloemHub } from "@/components/WaardebloemHub";
 import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -502,15 +502,11 @@ function SlideSamenhang() {
 
 function SlideWaardebloem() {
   return (
-    <SlideShell kicker="06 · De Waardebloem">
-      <div className="mb-6 flex items-end justify-between gap-6">
-        <h2 className="text-4xl leading-tight md:text-5xl">Drie waarden, één bloei</h2>
-        <p className="hidden max-w-sm text-sm text-muted-foreground md:block">
-          Roze = sociaal · oker = economisch · groen = ecologisch. 🐝 toont de sterkte van de bijdrage.
-        </p>
+    <section className="slide">
+      <div className="animate-in fade-in slide-in-from-bottom-3 duration-700">
+        <WaardebloemHub />
       </div>
-      <Waardebloem />
-    </SlideShell>
+    </section>
   );
 }
 

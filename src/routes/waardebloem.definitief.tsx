@@ -80,13 +80,13 @@ function Definitief() {
 
           {/* Red arrows from Workshops: to Ecologisch and to Economisch */}
           <path d="M 530 420 C 700 340, 850 320, 940 320" fill="none" stroke="#c0392b" strokeWidth="2.5" markerEnd="url(#d_red)" />
-          <text x={760} y={395} textAnchor="middle" style={{ fontSize: 12, fill: "#c0392b", fontStyle: "italic", fontWeight: 600 }}>
+          <text x={770} y={355} textAnchor="middle" style={{ fontSize: 12, fill: "#c0392b", fontStyle: "italic", fontWeight: 600 }}>
             Nieuwe materialen
           </text>
-          <Bees x={870} y={335} count={1} />
+          <Bees x={870} y={310} count={1} />
 
           <path d="M 480 500 C 510 580, 560 640, 620 670" fill="none" stroke="#c0392b" strokeWidth="2.5" markerEnd="url(#d_red)" />
-          <text x={520} y={600} transform="rotate(70 520 600)" style={{ fontSize: 11, fill: "#c0392b", fontStyle: "italic", fontWeight: 600 }}>
+          <text x={390} y={595} textAnchor="middle" style={{ fontSize: 12, fill: "#c0392b", fontStyle: "italic", fontWeight: 600 }}>
             Nieuwe materialen
           </text>
 

@@ -39,10 +39,10 @@ function ConceptOne() {
           <ArrowLabel x={600} y={170} text="Gedeelde werkruimtes  +  Gedeelde materialen" />
           <Bees x={600} y={120} count={1} />
 
-          {/* Cascadering loop near ecologisch */}
-          <path d="M 900 200 C 970 130, 1060 130, 1070 90" fill="none" stroke="var(--ecological)" strokeWidth="2" markerEnd="url(#arrEco)" />
-          <ArrowLabel x={1060} y={70} text="Cascadering" color="var(--ecological)" italic />
-          <Bees x={1000} y={130} count={1} />
+          {/* Cascadering loop near ecologisch (kept within frame) */}
+          <path d="M 900 210 C 960 150, 1020 140, 1040 115" fill="none" stroke="var(--ecological)" strokeWidth="2" markerEnd="url(#arrEco)" />
+          <ArrowLabel x={1010} y={95} text="Cascadering" color="var(--ecological)" italic />
+          <Bees x={970} y={140} count={1} />
 
           {/* Center "Nieuwe materialen" circle */}
           <circle cx="600" cy="370" r="78" fill="oklch(0.98 0.005 80)" stroke="var(--border)" />

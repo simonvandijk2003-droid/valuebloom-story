@@ -1,20 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { WaardebloemHub } from "@/components/WaardebloemHub";
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 
+// Layout route for /waardebloem. It MUST render <Outlet /> so the child routes
+// (waardebloem.index, waardebloem.concept-1, waardebloem.definitief) are shown.
+// Without the Outlet this parent component swallows every child, so navigating
+// to /waardebloem/concept-1 would still only render the parent's own markup.
 export const Route = createFileRoute("/waardebloem")({
-  head: () => ({
-    meta: [
-      { title: "De Waardebloem — Value Case Strijp-R" },
-      { name: "description", content: "Hub-pagina van de Waardebloem: kies tussen het eerste concept en de definitieve versie." },
-    ],
-  }),
-  component: WaardebloemHubPage,
+  component: WaardebloemLayout,
 });
 
-function WaardebloemHubPage() {
-  return (
-    <main className="min-h-screen px-6 py-14 md:py-20">
-      <WaardebloemHub standalone />
-    </main>
-  );
+function WaardebloemLayout() {
+  return <Outlet />;
 }

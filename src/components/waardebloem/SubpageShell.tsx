@@ -52,17 +52,18 @@ export function SubpageShell({
 /* ─────────── Flower building blocks (schematic, in style) ─────────── */
 
 export function Flower({
-  cx, cy, r, color, label, icon, sub,
+  cx, cy, r, color, label, icon, sub, className,
 }: {
   cx: number; cy: number; r: number;
   color: string;
   label: string;
   icon?: ReactNode;
   sub?: string;
+  className?: string;
 }) {
   const petals = 10;
   return (
-    <g>
+    <g className={className}>
       {Array.from({ length: petals }).map((_, i) => {
         const a = (i / petals) * Math.PI * 2;
         const px = cx + Math.cos(a) * r * 0.55;

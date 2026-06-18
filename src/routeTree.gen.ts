@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WaardebloemRouteImport } from './routes/waardebloem'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WaardebloemDefinitiefRouteImport } from './routes/waardebloem.definitief'
 import { Route as WaardebloemConcept1RouteImport } from './routes/waardebloem.concept-1'
 
 const WaardebloemRoute = WaardebloemRouteImport.update({
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WaardebloemDefinitiefRoute = WaardebloemDefinitiefRouteImport.update({
+  id: '/definitief',
+  path: '/definitief',
+  getParentRoute: () => WaardebloemRoute,
+} as any)
 const WaardebloemConcept1Route = WaardebloemConcept1RouteImport.update({
   id: '/concept-1',
   path: '/concept-1',
@@ -33,24 +39,40 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/waardebloem': typeof WaardebloemRouteWithChildren
   '/waardebloem/concept-1': typeof WaardebloemConcept1Route
+  '/waardebloem/definitief': typeof WaardebloemDefinitiefRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/waardebloem': typeof WaardebloemRouteWithChildren
   '/waardebloem/concept-1': typeof WaardebloemConcept1Route
+  '/waardebloem/definitief': typeof WaardebloemDefinitiefRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/waardebloem': typeof WaardebloemRouteWithChildren
   '/waardebloem/concept-1': typeof WaardebloemConcept1Route
+  '/waardebloem/definitief': typeof WaardebloemDefinitiefRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/waardebloem' | '/waardebloem/concept-1'
+  fullPaths:
+    | '/'
+    | '/waardebloem'
+    | '/waardebloem/concept-1'
+    | '/waardebloem/definitief'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/waardebloem' | '/waardebloem/concept-1'
-  id: '__root__' | '/' | '/waardebloem' | '/waardebloem/concept-1'
+  to:
+    | '/'
+    | '/waardebloem'
+    | '/waardebloem/concept-1'
+    | '/waardebloem/definitief'
+  id:
+    | '__root__'
+    | '/'
+    | '/waardebloem'
+    | '/waardebloem/concept-1'
+    | '/waardebloem/definitief'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -74,6 +96,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/waardebloem/definitief': {
+      id: '/waardebloem/definitief'
+      path: '/definitief'
+      fullPath: '/waardebloem/definitief'
+      preLoaderRoute: typeof WaardebloemDefinitiefRouteImport
+      parentRoute: typeof WaardebloemRoute
+    }
     '/waardebloem/concept-1': {
       id: '/waardebloem/concept-1'
       path: '/concept-1'
@@ -86,10 +115,12 @@ declare module '@tanstack/react-router' {
 
 interface WaardebloemRouteChildren {
   WaardebloemConcept1Route: typeof WaardebloemConcept1Route
+  WaardebloemDefinitiefRoute: typeof WaardebloemDefinitiefRoute
 }
 
 const WaardebloemRouteChildren: WaardebloemRouteChildren = {
   WaardebloemConcept1Route: WaardebloemConcept1Route,
+  WaardebloemDefinitiefRoute: WaardebloemDefinitiefRoute,
 }
 
 const WaardebloemRouteWithChildren = WaardebloemRoute._addFileChildren(

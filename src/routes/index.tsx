@@ -266,10 +266,10 @@ function SlidePerspectieven() {
             key={r.role}
             onMouseEnter={() => setActive(i)}
             onClick={() => setActive(i)}
-            className={`rounded-xl border px-3 py-3 text-left transition ${
+            className={`lv-lift rounded-xl border px-3 py-3 text-left transition ${
               i === active
                 ? "border-primary bg-primary/10 shadow-[var(--shadow-soft)]"
-                : "bg-card hover:bg-muted"
+                : "bg-card hover:bg-muted hover:shadow-[var(--shadow-soft)]"
             }`}
           >
             <span className="block font-mono text-[10px] tracking-widest text-muted-foreground">

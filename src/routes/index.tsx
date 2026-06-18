@@ -156,7 +156,7 @@ function SlideShell({ children, kicker, className = "" }: { children: React.Reac
     <section className={`slide ${className}`}>
       <div className="auto-stagger mx-auto w-full max-w-6xl">
         {kicker && (
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">{kicker}</p>
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-primary">{kicker}</p>
         )}
         {children}
       </div>

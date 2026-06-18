@@ -57,42 +57,42 @@ function Definitief() {
           </defs>
 
           {/* 1. Gedeelde werkruimtes (pink, top) */}
-          <line x1="340" y1="180" x2="900" y2="180" stroke="#d36b7a" strokeWidth="2.5" markerEnd="url(#d_pink)" markerStart="url(#d_pinkR)" />
-          <NumBadge x={560} y={148} n={1} color="#d36b7a" />
-          <ArrowLabel x={680} y={152} text="Gedeelde werkruimtes" />
+          <line x1="340" y1="180" x2="900" y2="180" stroke="#d36b7a" strokeWidth="2.5" markerEnd="url(#d_pink)" markerStart="url(#d_pinkR)" className="wb-draw" />
+          <g className="wb-late"><NumBadge x={560} y={148} n={1} color="#d36b7a" /></g>
+          <g className="wb-late"><ArrowLabel x={680} y={152} text="Gedeelde werkruimtes" /></g>
 
           {/* Cascadering loop top-right (dotted green) */}
-          <path d="M 940 210 C 1010 130, 1090 130, 1110 80" fill="none" stroke="#3aa66b" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#d_green)" />
-          <text x={1100} y={62} textAnchor="middle" style={{ fontSize: 12, fill: "#3aa66b", fontWeight: 600 }}>• Cascadering</text>
-          <Bees x={1040} y={120} count={1} />
+          <path d="M 940 210 C 1010 130, 1090 130, 1110 80" fill="none" stroke="#3aa66b" strokeWidth="2" strokeDasharray="5 4" markerEnd="url(#d_green)" className="wb-draw wb-draw-3" />
+          <text x={1100} y={62} textAnchor="middle" className="wb-late" style={{ fontSize: 12, fill: "#3aa66b", fontWeight: 600 }}>• Cascadering</text>
+          <g className="wb-late"><Bees x={1040} y={120} count={1} /></g>
 
           {/* 2. Gedeelde materialen (green, below #1) */}
-          <line x1="340" y1="240" x2="900" y2="240" stroke="#3aa66b" strokeWidth="2.5" markerEnd="url(#d_green)" markerStart="url(#d_greenR)" />
-          <NumBadge x={560} y={272} n={2} color="#3aa66b" />
-          <ArrowLabel x={680} y={276} text="Gedeelde materialen" />
+          <line x1="340" y1="240" x2="900" y2="240" stroke="#3aa66b" strokeWidth="2.5" markerEnd="url(#d_green)" markerStart="url(#d_greenR)" className="wb-draw wb-draw-2" />
+          <g className="wb-late"><NumBadge x={560} y={272} n={2} color="#3aa66b" /></g>
+          <g className="wb-late"><ArrowLabel x={680} y={276} text="Gedeelde materialen" /></g>
 
           {/* Dashed green to cascadering from line 2 */}
-          <path d="M 920 250 C 970 200, 1010 180, 1060 120" fill="none" stroke="#3aa66b" strokeWidth="1.5" strokeDasharray="4 4" markerEnd="url(#d_green)" />
-          <Bees x={960} y={195} count={1} />
+          <path d="M 920 250 C 970 200, 1010 180, 1060 120" fill="none" stroke="#3aa66b" strokeWidth="1.5" strokeDasharray="4 4" markerEnd="url(#d_green)" className="wb-draw wb-draw-3" />
+          <g className="wb-late"><Bees x={960} y={195} count={1} /></g>
 
           {/* Workshops blue mini-flower center */}
-          <Flower cx={460} cy={430} r={70} color={blue} label="Workshops" />
+          <Flower cx={460} cy={430} r={70} color={blue} label="Workshops" className="wb-flower wb-flower-4" />
 
           {/* Red arrows from Workshops: to Ecologisch and to Economisch */}
-          <path d="M 530 420 C 700 340, 850 320, 940 320" fill="none" stroke="#c0392b" strokeWidth="2.5" markerEnd="url(#d_red)" />
-          <text x={770} y={355} textAnchor="middle" style={{ fontSize: 12, fill: "#c0392b", fontStyle: "italic", fontWeight: 600 }}>
+          <path d="M 530 420 C 700 340, 850 320, 940 320" fill="none" stroke="#c0392b" strokeWidth="2.5" markerEnd="url(#d_red)" className="wb-draw wb-draw-4" />
+          <text x={770} y={355} textAnchor="middle" className="wb-late" style={{ fontSize: 12, fill: "#c0392b", fontStyle: "italic", fontWeight: 600 }}>
             Nieuwe materialen
           </text>
-          <Bees x={870} y={310} count={1} />
+          <g className="wb-late"><Bees x={870} y={310} count={1} /></g>
 
-          <path d="M 480 500 C 510 580, 560 640, 620 670" fill="none" stroke="#c0392b" strokeWidth="2.5" markerEnd="url(#d_red)" />
-          <text x={390} y={595} textAnchor="middle" style={{ fontSize: 12, fill: "#c0392b", fontStyle: "italic", fontWeight: 600 }}>
+          <path d="M 480 500 C 510 580, 560 640, 620 670" fill="none" stroke="#c0392b" strokeWidth="2.5" markerEnd="url(#d_red)" className="wb-draw wb-draw-4" />
+          <text x={390} y={595} textAnchor="middle" className="wb-late" style={{ fontSize: 12, fill: "#c0392b", fontStyle: "italic", fontWeight: 600 }}>
             Nieuwe materialen
           </text>
 
           {/* 3. Sociaal ↔ Economisch (pink diagonal) */}
-          <line x1="290" y1="370" x2="620" y2="680" stroke="#d36b7a" strokeWidth="2.5" markerEnd="url(#d_pink)" markerStart="url(#d_pinkR)" />
-          <foreignObject x="60" y="450" width="270" height="160">
+          <line x1="290" y1="370" x2="620" y2="680" stroke="#d36b7a" strokeWidth="2.5" markerEnd="url(#d_pink)" markerStart="url(#d_pinkR)" className="wb-draw wb-draw-5" />
+          <foreignObject x="60" y="450" width="270" height="160" className="wb-late">
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 24, height: 24, borderRadius: "9999px", background: "#d36b7a", color: "white", fontSize: 12, fontWeight: 700 }}>3</span>
@@ -107,8 +107,8 @@ function Definitief() {
           </foreignObject>
 
           {/* 4. Ecologisch ↔ Economisch (green diagonal) */}
-          <line x1="940" y1="370" x2="700" y2="680" stroke="#3aa66b" strokeWidth="2.5" markerEnd="url(#d_green)" />
-          <foreignObject x="960" y="450" width="290" height="140">
+          <line x1="940" y1="370" x2="700" y2="680" stroke="#3aa66b" strokeWidth="2.5" markerEnd="url(#d_green)" className="wb-draw wb-draw-5" />
+          <foreignObject x="960" y="450" width="290" height="140" className="wb-late">
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 24, height: 24, borderRadius: "9999px", background: "#3aa66b", color: "white", fontSize: 12, fontWeight: 700 }}>4</span>
@@ -121,14 +121,14 @@ function Definitief() {
           </foreignObject>
 
           {/* Main flowers */}
-          <Flower cx={220} cy={250} r={120} color={pink} label="Sociaal" icon={<Users size={36} strokeWidth={2} />} />
-          <Bees x={220} y={385} count={5} />
+          <Flower cx={220} cy={250} r={120} color={pink} label="Sociaal" icon={<Users size={36} strokeWidth={2} />} className="wb-flower" />
+          <g className="wb-late"><Bees x={220} y={385} count={5} /></g>
 
-          <Flower cx={1010} cy={250} r={120} color={green} label="Ecologisch" icon={<Leaf size={36} strokeWidth={2} />} />
-          <Bees x={1010} y={385} count={4} />
+          <Flower cx={1010} cy={250} r={120} color={green} label="Ecologisch" icon={<Leaf size={36} strokeWidth={2} />} className="wb-flower wb-flower-2" />
+          <g className="wb-late"><Bees x={1010} y={385} count={4} /></g>
 
-          <Flower cx={660} cy={710} r={110} color={yellow} label="Economisch" icon={<Euro size={32} strokeWidth={2.5} />} />
-          <Bees x={660} y={835 - 10} count={5} />
+          <Flower cx={660} cy={710} r={110} color={yellow} label="Economisch" icon={<Euro size={32} strokeWidth={2.5} />} className="wb-flower wb-flower-3" />
+          <g className="wb-late"><Bees x={660} y={835 - 10} count={5} /></g>
         </svg>
       </div>
     </SubpageShell>

@@ -35,14 +35,14 @@ function ConceptOne() {
       <div className="overflow-hidden rounded-2xl border bg-card p-4 shadow-[var(--shadow-soft)]">
         <svg viewBox="0 0 1200 760" className="h-auto w-full">
           {/* Top horizontal connection */}
-          <line x1="360" y1="180" x2="840" y2="180" stroke="var(--ink)" strokeWidth="2" markerEnd="url(#arrL1)" markerStart="url(#arrR1)" />
-          <ArrowLabel x={600} y={170} text="Gedeelde werkruimtes  +  Gedeelde materialen" />
-          <Bees x={600} y={120} count={1} />
+          <line x1="360" y1="180" x2="840" y2="180" stroke="var(--ink)" strokeWidth="2" markerEnd="url(#arrL1)" markerStart="url(#arrR1)" className="wb-draw" />
+          <g className="wb-late"><ArrowLabel x={600} y={170} text="Gedeelde werkruimtes  +  Gedeelde materialen" /></g>
+          <g className="wb-late"><Bees x={600} y={120} count={1} /></g>
 
           {/* Cascadering loop near ecologisch (kept within frame) */}
-          <path d="M 900 210 C 960 150, 1020 140, 1040 115" fill="none" stroke="var(--ecological)" strokeWidth="2" markerEnd="url(#arrEco)" />
-          <ArrowLabel x={1010} y={95} text="Cascadering" color="var(--ecological)" italic />
-          <Bees x={970} y={140} count={1} />
+          <path d="M 900 210 C 960 150, 1020 140, 1040 115" fill="none" stroke="var(--ecological)" strokeWidth="2" markerEnd="url(#arrEco)" className="wb-draw wb-draw-3" />
+          <g className="wb-late"><ArrowLabel x={1010} y={95} text="Cascadering" color="var(--ecological)" italic /></g>
+          <g className="wb-late"><Bees x={970} y={140} count={1} /></g>
 
           {/* Center "Nieuwe materialen" circle */}
           <circle cx="600" cy="370" r="78" fill="oklch(0.98 0.005 80)" stroke="var(--border)" />
@@ -57,35 +57,35 @@ function ConceptOne() {
           </text>
 
           {/* Red arrows from center: right + down */}
-          <line x1="678" y1="370" x2="860" y2="370" stroke="#c0392b" strokeWidth="3" markerEnd="url(#arrRed)" />
-          <line x1="600" y1="448" x2="600" y2="540" stroke="#c0392b" strokeWidth="3" markerEnd="url(#arrRed)" />
-          <Bees x={770} y={335} count={1} />
+          <line x1="678" y1="370" x2="860" y2="370" stroke="#c0392b" strokeWidth="3" markerEnd="url(#arrRed)" className="wb-draw wb-draw-4" />
+          <line x1="600" y1="448" x2="600" y2="540" stroke="#c0392b" strokeWidth="3" markerEnd="url(#arrRed)" className="wb-draw wb-draw-4" />
+          <g className="wb-late"><Bees x={770} y={335} count={1} /></g>
 
           {/* Sociaal → Economisch diagonal */}
-          <line x1="320" y1="380" x2="520" y2="600" stroke="var(--ink)" strokeWidth="1.5" markerEnd="url(#arrL1)" markerStart="url(#arrR1)" />
-          <foreignObject x="120" y="430" width="240" height="110">
+          <line x1="320" y1="380" x2="520" y2="600" stroke="var(--ink)" strokeWidth="1.5" markerEnd="url(#arrL1)" markerStart="url(#arrR1)" className="wb-draw wb-draw-2" />
+          <foreignObject x="120" y="430" width="240" height="110" className="wb-late">
             <ul style={{ fontSize: 13, lineHeight: 1.5, color: "var(--ink)", paddingLeft: 18, margin: 0 }}>
               <li>Workshops</li>
               <li>Open ateliers</li>
               <li>Gezamenlijke projecten</li>
             </ul>
           </foreignObject>
-          <Bees x={420} y={500} count={1} />
+          <g className="wb-late"><Bees x={420} y={500} count={1} /></g>
 
           {/* Ecologisch → Economisch diagonal "Betaalbare huur" */}
-          <line x1="880" y1="380" x2="680" y2="600" stroke="var(--ink)" strokeWidth="1.5" markerEnd="url(#arrL1)" />
-          <ArrowLabel x={840} y={500} text="Betaalbare huur" />
-          <Bees x={770} y={450} count={1} />
+          <line x1="880" y1="380" x2="680" y2="600" stroke="var(--ink)" strokeWidth="1.5" markerEnd="url(#arrL1)" className="wb-draw wb-draw-2" />
+          <g className="wb-late"><ArrowLabel x={840} y={500} text="Betaalbare huur" /></g>
+          <g className="wb-late"><Bees x={770} y={450} count={1} /></g>
 
           {/* Flowers */}
-          <Flower cx={240} cy={240} r={110} color="oklch(0.78 0.12 25)" label="Sociaal" />
-          <Bees x={240} y={365} count={5} />
+          <Flower cx={240} cy={240} r={110} color="oklch(0.78 0.12 25)" label="Sociaal" className="wb-flower" />
+          <g className="wb-late"><Bees x={240} y={365} count={5} /></g>
 
-          <Flower cx={960} cy={240} r={110} color="oklch(0.78 0.10 150)" label="Ecologisch" />
-          <Bees x={960} y={365} count={4} />
+          <Flower cx={960} cy={240} r={110} color="oklch(0.78 0.10 150)" label="Ecologisch" className="wb-flower wb-flower-2" />
+          <g className="wb-late"><Bees x={960} y={365} count={4} /></g>
 
-          <Flower cx={600} cy={620} r={110} color="oklch(0.85 0.13 80)" label="Economisch" />
-          <Bees x={600} y={745} count={4} />
+          <Flower cx={600} cy={620} r={110} color="oklch(0.85 0.13 80)" label="Economisch" className="wb-flower wb-flower-3" />
+          <g className="wb-late"><Bees x={600} y={745} count={4} /></g>
 
           {/* Markers */}
           <defs>

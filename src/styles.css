@@ -37,62 +37,54 @@
   --color-economic-foreground: var(--economic-foreground);
   --color-ecological: var(--ecological);
   --color-ecological-foreground: var(--ecological-foreground);
-  --color-steel: var(--steel);
-  --color-concrete: var(--concrete);
-  --color-wood: var(--wood);
 
-  --font-display: "Fraunces", Georgia, serif;
+  --font-display: "Inter", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
 :root {
   --radius: 0.5rem;
 
-  /* Warm industrial palette — cream, charcoal, terracotta, ochre, olive, steel */
-  --background: oklch(0.97 0.012 80);          /* warm cream / paper */
-  --foreground: oklch(0.22 0.015 60);          /* deep charcoal */
+  /* Minimalist light theme */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.18 0.01 250);
 
-  --card: oklch(0.985 0.008 85);
-  --card-foreground: oklch(0.22 0.015 60);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.01 250);
 
-  --popover: oklch(0.985 0.008 85);
-  --popover-foreground: oklch(0.22 0.015 60);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.01 250);
 
-  --primary: oklch(0.32 0.025 50);             /* dark steel/charcoal */
-  --primary-foreground: oklch(0.97 0.012 80);
+  /* #1978E5 */
+  --primary: oklch(0.58 0.18 255);
+  --primary-foreground: oklch(1 0 0);
 
-  --secondary: oklch(0.92 0.018 75);
-  --secondary-foreground: oklch(0.22 0.015 60);
+  --secondary: oklch(0.97 0.005 250);
+  --secondary-foreground: oklch(0.18 0.01 250);
 
-  --muted: oklch(0.93 0.012 75);
-  --muted-foreground: oklch(0.45 0.018 60);
+  --muted: oklch(0.97 0.005 250);
+  --muted-foreground: oklch(0.48 0.01 250);
 
-  --accent: oklch(0.62 0.13 45);               /* terracotta accent */
-  --accent-foreground: oklch(0.98 0.005 80);
+  --accent: oklch(0.58 0.18 255);
+  --accent-foreground: oklch(1 0 0);
 
   --destructive: oklch(0.55 0.2 27);
-  --destructive-foreground: oklch(0.98 0 0);
+  --destructive-foreground: oklch(1 0 0);
 
-  --border: oklch(0.86 0.018 70);
-  --input: oklch(0.86 0.018 70);
-  --ring: oklch(0.55 0.08 50);
+  --border: oklch(0.92 0.005 250);
+  --input: oklch(0.92 0.005 250);
+  --ring: oklch(0.58 0.18 255);
 
-  /* Waardebloem values */
-  --social: oklch(0.64 0.14 40);               /* warm terracotta */
-  --social-foreground: oklch(0.99 0.005 80);
-  --economic: oklch(0.72 0.13 75);             /* warm ochre */
-  --economic-foreground: oklch(0.2 0.02 60);
-  --ecological: oklch(0.52 0.08 135);          /* olive green */
-  --ecological-foreground: oklch(0.99 0.005 80);
+  /* Waardebloem values — subtle, minimalist */
+  --social: oklch(0.58 0.18 255);              /* primary blue */
+  --social-foreground: oklch(1 0 0);
+  --economic: oklch(0.68 0.15 165);            /* teal/green */
+  --economic-foreground: oklch(1 0 0);
+  --ecological: oklch(0.62 0.16 145);          /* fresh green */
+  --ecological-foreground: oklch(1 0 0);
 
-  --steel: oklch(0.38 0.02 240);
-  --concrete: oklch(0.78 0.008 70);
-  --wood: oklch(0.55 0.08 55);
-
-  --gradient-hero: linear-gradient(135deg, oklch(0.97 0.012 80) 0%, oklch(0.92 0.02 70) 100%);
-  --gradient-warm: linear-gradient(135deg, oklch(0.64 0.14 40) 0%, oklch(0.72 0.13 75) 100%);
-  --shadow-soft: 0 1px 2px oklch(0.2 0.02 60 / 0.06), 0 8px 24px oklch(0.2 0.02 60 / 0.08);
-  --shadow-petal: 0 12px 40px oklch(0.2 0.02 60 / 0.12);
+  --shadow-soft: 0 1px 2px oklch(0.18 0.01 250 / 0.04), 0 4px 16px oklch(0.18 0.01 250 / 0.05);
+  --shadow-petal: 0 12px 40px oklch(0.18 0.01 250 / 0.08);
 }
 
 @layer base {
@@ -106,28 +98,12 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
-    font-weight: 500;
-  }
-}
-
-@utility texture-grain {
-  position: relative;
-  isolation: isolate;
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.5;
-    mix-blend-mode: multiply;
-    background-image: radial-gradient(oklch(0.3 0.02 60 / 0.04) 1px, transparent 1px);
-    background-size: 4px 4px;
-    z-index: -1;
+    letter-spacing: -0.025em;
+    font-weight: 600;
   }
 }
 

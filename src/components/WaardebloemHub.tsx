@@ -51,16 +51,6 @@ export function WaardebloemHub({ standalone = false }: { standalone?: boolean })
         Conceptmodel gebaseerd op Leclercq en Smit (2026).
       </p>
 
-      {standalone && (
-        <div className="mt-8">
-          <Link
-            to="/"
-            className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-          >
-            ← Terug naar presentatie
-          </Link>
-        </div>
-      )}
     </div>
   );
 }

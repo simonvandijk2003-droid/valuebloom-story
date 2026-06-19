@@ -16,7 +16,7 @@ export function WaardebloemHub({ standalone = false }: { standalone?: boolean })
         definitieve versie.
       </p>
 
-      <div className="mt-9 grid gap-5 md:grid-cols-2">
+      <div className="mt-9 grid gap-5 md:grid-cols-3">
         <HubCard
           to="/waardebloem/concept-1"
           number="01"
@@ -26,14 +26,23 @@ export function WaardebloemHub({ standalone = false }: { standalone?: boolean })
           label="De eerste schets van het model"
         />
         <HubCard
-          to="/waardebloem/definitief"
+          to="/waardebloem/meting"
           number="02"
+          color="var(--economic, var(--primary))"
+          title="Meting"
+          subtitle="Interviews"
+          label="Resultaten uit de interviews"
+        />
+        <HubCard
+          to="/waardebloem/definitief"
+          number="03"
           color="var(--ecological)"
           title="Definitieve versie"
           subtitle="Aangescherpt"
           label="Aangescherpt na interviews & reflectie"
         />
       </div>
+
 
       <p className="mt-7 max-w-3xl text-sm text-muted-foreground">
         Uit de interviews (15 juni 2026, maakbedrijf Piet Hein Eek) bleek sociale waarde het

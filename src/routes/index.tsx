@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { WaardebloemHub } from "@/components/WaardebloemHub";
 import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
+import bmtModelAsset from "@/assets/bmt-model.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Deck,
@@ -292,79 +293,23 @@ function SlidePerspectieven() {
 }
 
 function SlideBMT() {
-  const phases = [
-    {
-      title: "Definitiefase",
-      sub: "Aanleiding & context",
-      items: [
-        "Ontbrekend communitygevoel tussen bewoners, makers en ondernemers (belangrijkste).",
-        "Betaalbare werkruimtes onder druk.",
-        "Verduurzaming en technische staat van het pand.",
-      ],
-    },
-    {
-      title: "Ontwerpfase",
-      sub: "Strategie: ABCD",
-      items: [
-        "Asset Based Community Development: versterken van bestaande kwaliteiten, talenten en netwerken.",
-        "Open atelierdagen en ambachtsworkshops voor kinderen.",
-        "Gezamenlijke maakprojecten en gedeelde werkruimtes.",
-      ],
-    },
-    {
-      title: "Resultaatfase",
-      sub: "Impact & waardecreatie",
-      items: [
-        "Sociaal: meer ontmoeting, samenwerking, sterker communitygevoel.",
-        "Economisch: nieuwe opdrachten, gezamenlijke projecten, aankopen door bewoners.",
-        "Ecologisch: delen van ruimtes en materialen, hergebruik, minder verspilling.",
-      ],
-    },
-  ];
   return (
     <SlideShell kicker="03 · BMT-model">
       <h2 className="text-4xl leading-tight md:text-5xl">Van spanningsveld naar propositie</h2>
-      <div className="mt-7 grid gap-5 md:grid-cols-3">
-        {phases.map((p, i) => (
-          <div
-            key={p.title}
-            className={`relative rounded-2xl border bg-card p-6 shadow-[var(--shadow-soft)] ${
-              i === 2 ? "ring-2 ring-primary/40" : ""
-            }`}
-          >
-            <span className="font-mono text-[10px] tracking-widest text-muted-foreground">FASE 0{i + 1}</span>
-            <h3 className="mt-1 text-2xl">{p.title}</h3>
-            <p className="text-sm text-primary">{p.sub}</p>
-            <ul className="mt-4 space-y-2 text-sm text-foreground/85">
-              {p.items.map((t) => (
-                <li key={t} className="flex gap-2">
-                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-foreground/50" />
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-      <div className="mt-6 grid gap-4 md:grid-cols-2">
-        <div className="rounded-2xl border-l-4 border-primary bg-card p-5">
-          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Droom 2040–2045</p>
-          <p className="mt-2 text-sm leading-relaxed">
-            Wonen, maken en ontmoeten zijn verbonden. Bewoners, makers en ondernemers kennen elkaar en
-            werken samen. Werkruimtes blijven betaalbaar; circulariteit staat centraal.
-          </p>
-        </div>
-        <div className="rounded-2xl border-l-4 bg-card p-5" style={{ borderColor: "var(--ecological)" }}>
-          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Propositie</p>
-          <p className="mt-2 text-sm leading-relaxed">
-            Wederzijdse versterking tussen bewoners, makers en het maakbedrijf via gedeelde ruimtes,
-            ontmoetingsplekken en betaalbare werkruimtes.
-          </p>
-        </div>
+      <p className="mt-3 max-w-3xl text-foreground/80">
+        Het Business Model Template van Strijp-R: definitiefase, ontwerpfase en resultaatfase in één overzicht.
+      </p>
+      <div className="mt-6 flex flex-1 items-center justify-center overflow-hidden rounded-2xl border bg-card p-4 shadow-[var(--shadow-soft)]">
+        <img
+          src={bmtModelAsset.url}
+          alt="Business Model Template Strijp-R: definitie-, ontwerp- en resultaatfase"
+          className="max-h-[68vh] w-auto max-w-full object-contain"
+        />
       </div>
     </SlideShell>
   );
 }
+
 
 function SlideThirdPlace() {
   const pillars = ["Mensen", "Plek", "Beleving", "Product", "Toekomst"];

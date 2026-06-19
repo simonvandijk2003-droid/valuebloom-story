@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SubpageShell } from "@/components/waardebloem/SubpageShell";
 import tabel5 from "@/assets/meting-tabel5.png.asset.json";
-import tabel6 from "@/assets/meting-tabel6.png.asset.json";
-import grafiek from "@/assets/meting-grafiek.png.asset.json";
+import tabel6 from "@/assets/meting-tabel6-v2.png.asset.json";
+import grafiek from "@/assets/meting-grafiek-v2.png.asset.json";
 
 export const Route = createFileRoute("/waardebloem/meting")({
   head: () => ({

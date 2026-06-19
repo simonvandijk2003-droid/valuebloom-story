@@ -180,6 +180,24 @@ function SlideTitel({ onStart }: { onStart: () => void }) {
           Een voormalig Philips-industrieterrein in Eindhoven, getransformeerd tot creatieve broedplaats
           en makerslandschap.
         </p>
+
+        <div className="mx-auto mt-10 max-w-2xl rounded-2xl border bg-card/70 px-6 py-5 text-left shadow-[var(--shadow-soft)] backdrop-blur">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
+            Vastgoedkunde &amp; Facility Management · Groep 3
+          </p>
+          <ul className="mt-3 grid grid-cols-1 gap-x-6 gap-y-1 text-sm text-foreground/85 sm:grid-cols-2">
+            <li>Elise van Bilsen <span className="text-muted-foreground">(1069490)</span></li>
+            <li>Ali Salim Dervis <span className="text-muted-foreground">(1111210)</span></li>
+            <li>Simon van Dijk <span className="text-muted-foreground">(1068376)</span></li>
+            <li>Iris Leenheer <span className="text-muted-foreground">(1007507)</span></li>
+            <li>Suzanne van der Kruk <span className="text-muted-foreground">(1049143)</span></li>
+            <li>Ilse Knoll <span className="text-muted-foreground">(1111745)</span></li>
+          </ul>
+          <p className="mt-3 text-[11px] uppercase tracking-widest text-muted-foreground">
+            IGOOOG25P · 19-06-2026
+          </p>
+        </div>
+
         <button
           onClick={onStart}
           className="mt-12 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-medium text-primary-foreground shadow-[var(--shadow-soft)] transition hover:scale-[1.02]"

@@ -167,7 +167,7 @@ function SlideShell({ children, kicker, className = "" }: { children: React.Reac
 
 function SlideTitel({ onStart }: { onStart: () => void }) {
   return (
-    <section className="slide" style={{ background: "linear-gradient(135deg, oklch(0.96 0.012 75) 0%, oklch(0.88 0.04 70) 100%)" }}>
+    <section className="slide relative" style={{ background: "linear-gradient(135deg, oklch(0.96 0.012 75) 0%, oklch(0.88 0.04 70) 100%)" }}>
       <div className="mx-auto w-full max-w-5xl text-center animate-in fade-in zoom-in-95 duration-1000">
         <p className="mb-6 text-xs font-semibold uppercase tracking-[0.32em] text-primary">Value Case · Strijp-R · 2026</p>
         <h1 className="text-balance text-6xl leading-[1.02] md:text-8xl">
@@ -181,23 +181,6 @@ function SlideTitel({ onStart }: { onStart: () => void }) {
           en makerslandschap.
         </p>
 
-        <div className="mx-auto mt-10 max-w-2xl rounded-2xl border bg-card/70 px-6 py-5 text-left shadow-[var(--shadow-soft)] backdrop-blur">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
-            Vastgoedkunde &amp; Facility Management · Groep 3
-          </p>
-          <ul className="mt-3 grid grid-cols-1 gap-x-6 gap-y-1 text-sm text-foreground/85 sm:grid-cols-2">
-            <li>Elise van Bilsen <span className="text-muted-foreground">(1069490)</span></li>
-            <li>Ali Salim Dervis <span className="text-muted-foreground">(1111210)</span></li>
-            <li>Simon van Dijk <span className="text-muted-foreground">(1068376)</span></li>
-            <li>Iris Leenheer <span className="text-muted-foreground">(1007507)</span></li>
-            <li>Suzanne van der Kruk <span className="text-muted-foreground">(1049143)</span></li>
-            <li>Ilse Knoll <span className="text-muted-foreground">(1111745)</span></li>
-          </ul>
-          <p className="mt-3 text-[11px] uppercase tracking-widest text-muted-foreground">
-            IGOOOG25P · 19-06-2026
-          </p>
-        </div>
-
         <button
           onClick={onStart}
           className="mt-12 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-medium text-primary-foreground shadow-[var(--shadow-soft)] transition hover:scale-[1.02]"
@@ -208,7 +191,25 @@ function SlideTitel({ onStart }: { onStart: () => void }) {
           ← → navigeren · spatie volgende
         </p>
       </div>
+
+      <div className="absolute bottom-6 left-6 max-w-[19rem] rounded-xl border bg-card/75 px-4 py-3 text-left text-[11px] leading-snug shadow-[var(--shadow-soft)] backdrop-blur">
+        <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-primary">
+          Vastgoedkunde &amp; FM · Groep 3
+        </p>
+        <ul className="mt-1.5 space-y-0.5 text-foreground/85">
+          <li>Elise van Bilsen <span className="text-muted-foreground">(1069490)</span></li>
+          <li>Ali Salim Dervis <span className="text-muted-foreground">(1111210)</span></li>
+          <li>Simon van Dijk <span className="text-muted-foreground">(1068376)</span></li>
+          <li>Iris Leenheer <span className="text-muted-foreground">(1007507)</span></li>
+          <li>Suzanne van der Kruk <span className="text-muted-foreground">(1049143)</span></li>
+          <li>Ilse Knoll <span className="text-muted-foreground">(1111745)</span></li>
+        </ul>
+        <p className="mt-1.5 text-[9px] uppercase tracking-widest text-muted-foreground">
+          IGOOOG25P · 19-06-2026
+        </p>
+      </div>
     </section>
+
   );
 }
 

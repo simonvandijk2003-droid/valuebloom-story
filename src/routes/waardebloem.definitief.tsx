@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SubpageShell } from "@/components/waardebloem/SubpageShell";
-import bloemAsset from "@/assets/waardebloem-definitief.png.asset.json";
+import bloemAsset from "@/assets/waardebloem-definitief-v2.png.asset.json";
 
 export const Route = createFileRoute("/waardebloem/definitief")({
   head: () => ({

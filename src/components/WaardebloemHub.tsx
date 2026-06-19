@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+
 
 export function WaardebloemHub({ standalone = false }: { standalone?: boolean }) {
   return (

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { WaardebloemHub } from "@/components/WaardebloemHub";
 import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
+import bmtModelAsset from "@/assets/bmt-model.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Deck,

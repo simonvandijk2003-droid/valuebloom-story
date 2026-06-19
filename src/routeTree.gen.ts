@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WaardebloemRouteImport } from './routes/waardebloem'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WaardebloemIndexRouteImport } from './routes/waardebloem.index'
+import { Route as WaardebloemMetingRouteImport } from './routes/waardebloem.meting'
 import { Route as WaardebloemDefinitiefRouteImport } from './routes/waardebloem.definitief'
 import { Route as WaardebloemConcept1RouteImport } from './routes/waardebloem.concept-1'
 
@@ -30,6 +31,11 @@ const WaardebloemIndexRoute = WaardebloemIndexRouteImport.update({
   path: '/',
   getParentRoute: () => WaardebloemRoute,
 } as any)
+const WaardebloemMetingRoute = WaardebloemMetingRouteImport.update({
+  id: '/meting',
+  path: '/meting',
+  getParentRoute: () => WaardebloemRoute,
+} as any)
 const WaardebloemDefinitiefRoute = WaardebloemDefinitiefRouteImport.update({
   id: '/definitief',
   path: '/definitief',
@@ -46,12 +52,14 @@ export interface FileRoutesByFullPath {
   '/waardebloem': typeof WaardebloemRouteWithChildren
   '/waardebloem/concept-1': typeof WaardebloemConcept1Route
   '/waardebloem/definitief': typeof WaardebloemDefinitiefRoute
+  '/waardebloem/meting': typeof WaardebloemMetingRoute
   '/waardebloem/': typeof WaardebloemIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/waardebloem/concept-1': typeof WaardebloemConcept1Route
   '/waardebloem/definitief': typeof WaardebloemDefinitiefRoute
+  '/waardebloem/meting': typeof WaardebloemMetingRoute
   '/waardebloem': typeof WaardebloemIndexRoute
 }
 export interface FileRoutesById {
@@ -60,6 +68,7 @@ export interface FileRoutesById {
   '/waardebloem': typeof WaardebloemRouteWithChildren
   '/waardebloem/concept-1': typeof WaardebloemConcept1Route
   '/waardebloem/definitief': typeof WaardebloemDefinitiefRoute
+  '/waardebloem/meting': typeof WaardebloemMetingRoute
   '/waardebloem/': typeof WaardebloemIndexRoute
 }
 export interface FileRouteTypes {
@@ -69,12 +78,14 @@ export interface FileRouteTypes {
     | '/waardebloem'
     | '/waardebloem/concept-1'
     | '/waardebloem/definitief'
+    | '/waardebloem/meting'
     | '/waardebloem/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/waardebloem/concept-1'
     | '/waardebloem/definitief'
+    | '/waardebloem/meting'
     | '/waardebloem'
   id:
     | '__root__'
@@ -82,6 +93,7 @@ export interface FileRouteTypes {
     | '/waardebloem'
     | '/waardebloem/concept-1'
     | '/waardebloem/definitief'
+    | '/waardebloem/meting'
     | '/waardebloem/'
   fileRoutesById: FileRoutesById
 }
@@ -113,6 +125,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WaardebloemIndexRouteImport
       parentRoute: typeof WaardebloemRoute
     }
+    '/waardebloem/meting': {
+      id: '/waardebloem/meting'
+      path: '/meting'
+      fullPath: '/waardebloem/meting'
+      preLoaderRoute: typeof WaardebloemMetingRouteImport
+      parentRoute: typeof WaardebloemRoute
+    }
     '/waardebloem/definitief': {
       id: '/waardebloem/definitief'
       path: '/definitief'
@@ -133,12 +152,14 @@ declare module '@tanstack/react-router' {
 interface WaardebloemRouteChildren {
   WaardebloemConcept1Route: typeof WaardebloemConcept1Route
   WaardebloemDefinitiefRoute: typeof WaardebloemDefinitiefRoute
+  WaardebloemMetingRoute: typeof WaardebloemMetingRoute
   WaardebloemIndexRoute: typeof WaardebloemIndexRoute
 }
 
 const WaardebloemRouteChildren: WaardebloemRouteChildren = {
   WaardebloemConcept1Route: WaardebloemConcept1Route,
   WaardebloemDefinitiefRoute: WaardebloemDefinitiefRoute,
+  WaardebloemMetingRoute: WaardebloemMetingRoute,
   WaardebloemIndexRoute: WaardebloemIndexRoute,
 }
 
@@ -153,13 +174,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

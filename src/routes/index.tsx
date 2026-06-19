@@ -353,23 +353,14 @@ function SlideThirdPlace() {
           </div>
           <p className="mt-6 text-xs text-muted-foreground">Bron: Ray Oldenburg, 1989.</p>
         </div>
-        <div className="grid grid-cols-3 gap-3">
-          {[
-            { t: "Thuis", s: "First place", c: "var(--sand)" },
-            { t: "Werk / school", s: "Second place", c: "var(--economic)" },
-            { t: "Ontmoetings­plek", s: "Third place", c: "var(--social)" },
-          ].map((c, i) => (
-            <div
-              key={c.t}
-              className="rounded-2xl border bg-card p-5 text-center shadow-[var(--shadow-soft)]"
-              style={{ borderTop: `4px solid ${c.c}` }}
-            >
-              <span className="font-mono text-[10px] tracking-widest text-muted-foreground">0{i + 1}</span>
-              <p className="mt-2 font-medium">{c.t}</p>
-              <p className="text-xs text-muted-foreground">{c.s}</p>
-            </div>
-          ))}
+        <div className="flex items-center justify-center">
+          <img
+            src={thirdPlaceAsset.url}
+            alt="Third Place model: thuis (first place), werk of school (second place) en ontmoetingsplek (third place)"
+            className="h-auto w-full max-w-md object-contain"
+          />
         </div>
+
       </div>
     </SlideShell>
   );
